@@ -2,7 +2,9 @@
 /* -----------------
 Assignment code here
 ------------------*/
-
+/* -------------------------------------
+Create arrays of all possible characters
+--------------------------------------*/
 //function to iterate through CharacterCodes with "LOW" and "HIGH" values to generate arrays
 function arrayFromLowtoHigh(low, high) {
   let array = [];
@@ -21,6 +23,9 @@ const specialCharCodes = arrayFromLowtoHigh(33, 47)
   .concat(arrayFromLowtoHigh(91, 96))
   .concat(arrayFromLowtoHigh(123, 126));
 
+/* -------------------------------------------------------------------
+Create all functions that will run when "GENERATE PASSWORD" is pressed
+--------------------------------------------------------------------*/
 //create empty arrays to use in code
 let charCodes = [];
 let passwordLengthNumber = [];
@@ -118,6 +123,9 @@ const clickPassword = function () {
   generatePassword();
 };
 
+/* -------------------------------------------------
+Create event listener for "GENERATE PASSWORD" button
+--------------------------------------------------*/
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
