@@ -104,7 +104,7 @@ const specialIncl = function () {
 };
 
 //function to repeat character type functions until min 1 is picked
-const charMinFunc = function () {
+let charMinFunc = function () {
   upperCaseIncl();
   lowerCaseIncl();
   numericIncl();
@@ -116,7 +116,7 @@ const charMinFunc = function () {
 };
 
 //create function to pull answers from user and generate password
-const generatePassword = function () {
+const generatePassword = function (event) {
   const passwordCharacters = [];
   for (let i = 0; i < passwordLengthNumber; i++) {
     const characterCode =
@@ -135,6 +135,10 @@ const clickPassword = function () {
   lengthChoice();
   charMinFunc();
   generatePassword();
+  //reset arrays to zero to allow to press second time
+  charMin = 0;
+  charCodes = [];
+  passwordLengthNumber = [];
 };
 
 // Get references to the #generate element
