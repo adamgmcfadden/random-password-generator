@@ -55,9 +55,9 @@ const upperCaseIncl = function () {
 
   if (includeUppercase) {
     charCodes = charCodes.concat(uppercaseCharCodes);
-    alert("You chose to include 'UPPERCASE CHARACTERS'");
+    alert("You chose to <include> 'UPPERCASE CHARACTERS'");
   } else {
-    alert("You have chosen to exclude 'UPPERCASE CHARACTERS'");
+    alert("You have chosen to <exclude> 'UPPERCASE CHARACTERS'");
   }
 };
 
@@ -68,9 +68,9 @@ const lowerCaseIncl = function () {
   );
   if (includeLowercase) {
     charCodes = charCodes.concat(lowercaseCharCodes);
-    alert("You chose to include 'LOWERCASE CHARACTERS'");
+    alert("You chose to <include> 'LOWERCASE CHARACTERS'");
   } else {
-    alert("You chose to exclude 'LOWERCASE CHARACTERS'");
+    alert("You chose to <exclude> 'LOWERCASE CHARACTERS'");
   }
 };
 
@@ -79,9 +79,9 @@ const numericIncl = function () {
   let includeNums = window.confirm("Would you like to include NUMBERS?");
   if (includeNums) {
     charCodes = charCodes.concat(numberCharCodes);
-    alert("You chose to include 'NUMBERS'");
+    alert("You chose to <include> 'NUMBERS'");
   } else {
-    alert("You chose to exclude 'NUMBERS'");
+    alert("You chose to <exclude> 'NUMBERS'");
   }
 };
 
@@ -92,9 +92,9 @@ const specialIncl = function () {
   );
   if (includeSpecial) {
     charCodes = charCodes.concat(specialCharCodes);
-    alert("You chose to include 'SPECIAL CHARACTERS'");
+    alert("You chose to <include> 'SPECIAL CHARACTERS'");
   } else {
-    alert("You chose to exclude 'SPECIAL CHARACTERS'");
+    alert("You chose to <exclude> 'SPECIAL CHARACTERS'");
   }
 };
 
@@ -102,8 +102,10 @@ const specialIncl = function () {
 const generatePassword = function () {
   const passwordCharacters = [];
   for (let i = 0; i < passwordLengthNumber; i++) {
+    // math .floor.random to pull random characters from charCodes
     const characterCode =
       charCodes[Math.floor(Math.random() * charCodes.length)];
+    //convert charCodes from number to assigned built in character
     passwordCharacters.push(String.fromCharCode(characterCode));
   }
   //join values into one continuous string
