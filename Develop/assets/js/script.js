@@ -26,17 +26,18 @@ const specialCharCodes = arrayFromLowtoHigh(33, 47)
 //create empty arrays to use in code
 let charCodes = [];
 let passwordLengthNumber = [];
+let charMin = 0;
 
 /* -------------------------------------
 Create all functions that will run when 
 --------------------------------------*/
 //function to prompt and save user input for desired password length
 const lengthChoice = function () {
-  const passLength = window.prompt(
+  const passLength = prompt(
     "Choose the password's length requirement. It must be between 8 and 128 characters"
   );
   if (passLength < 8 || passLength > 128) {
-    window.alert(
+    alert(
       "Incorrect input! Password length must be between 8 and 128 characters"
     );
     lengthChoice();
@@ -49,13 +50,14 @@ const lengthChoice = function () {
 
 //function to ask if user wants uppercase characters
 const upperCaseIncl = function () {
-  let includeUppercase = window.confirm(
+  let includeUppercase = confirm(
     "Would you like to include 'UPPERCASE CHARACTERS'?"
   );
 
   if (includeUppercase) {
     charCodes = charCodes.concat(uppercaseCharCodes);
     alert("You chose to include 'UPPERCASE CHARACTERS'");
+    charMin += 1;
   } else {
     alert("You have chosen to exclude 'UPPERCASE CHARACTERS'");
   }
@@ -63,12 +65,13 @@ const upperCaseIncl = function () {
 
 //function to ask if user wants lowercase characters
 const lowerCaseIncl = function () {
-  let includeLowercase = window.confirm(
+  let includeLowercase = confirm(
     "Would you like to include 'LOWERCASE CHARACTERS'?"
   );
   if (includeLowercase) {
     charCodes = charCodes.concat(lowercaseCharCodes);
     alert("You chose to include 'LOWERCASE CHARACTERS'");
+    charMin += 1;
   } else {
     alert("You chose to exclude 'LOWERCASE CHARACTERS'");
   }
@@ -76,10 +79,11 @@ const lowerCaseIncl = function () {
 
 // function to ask if user wants numeric values
 const numericIncl = function () {
-  let includeNums = window.confirm("Would you like to include NUMBERS?");
+  let includeNums = confirm("Would you like to include NUMBERS?");
   if (includeNums) {
     charCodes = charCodes.concat(numberCharCodes);
     alert("You chose to include 'NUMBERS'");
+    charMin += 1;
   } else {
     alert("You chose to exclude 'NUMBERS'");
   }
@@ -87,14 +91,27 @@ const numericIncl = function () {
 
 // function to ask if user wants special characters
 const specialIncl = function () {
-  let includeSpecial = window.confirm(
+  let includeSpecial = confirm(
     "Would you like to include 'SPECIAL CHARACTERS' (#, %, & etc.) ?"
   );
   if (includeSpecial) {
     charCodes = charCodes.concat(specialCharCodes);
     alert("You chose to include 'SPECIAL CHARACTERS'");
+    charMin += 1;
   } else {
     alert("You chose to exclude 'SPECIAL CHARACTERS'");
+  }
+};
+
+//function to repeat character type functions until min 1 is picked
+const charMinFunc = function () {
+  upperCaseIncl();
+  lowerCaseIncl();
+  numericIncl();
+  specialIncl();
+  if (charMin === 0) {
+    alert("You must choose at least one type of character");
+    charMinFunc();
   }
 };
 
@@ -116,10 +133,7 @@ const generatePassword = function () {
 // bring all small functions together
 const clickPassword = function () {
   lengthChoice();
-  upperCaseIncl();
-  lowerCaseIncl();
-  numericIncl();
-  specialIncl();
+  charMinFunc();
   generatePassword();
 };
 
