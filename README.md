@@ -16,6 +16,8 @@
 
 ## Screenshot
 
+![screenshot website](https://user-images.githubusercontent.com/83710803/121276383-911d4500-c89c-11eb-91b0-af561a004f83.png)
+
 ## Website
 
 https://adamgmcfadden.github.io/random-password-generator/
