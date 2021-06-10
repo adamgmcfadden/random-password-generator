@@ -33,18 +33,21 @@ Create all functions that will run when
 --------------------------------------*/
 //function to prompt and save user input for desired password length
 const lengthChoice = function () {
-  const passLength = prompt(
+  let passLength = prompt(
     "Choose the password's length requirement. It must be between 8 and 128 characters"
   );
-  if (passLength < 8 || passLength > 128) {
+  //set answer to integer
+  passLength = parseInt(passLength);
+
+  if (passLength >= 8 && passLength <= 128) {
+    // push to empty array
+    passwordLengthNumber.push(passLength);
+    alert("Your password will be " + passLength + " characters");
+  } else {
     alert(
-      "Incorrect input! Password length must be between 8 and 128 characters"
+      "Incorrect input! Password length must be an integer between 8 and 128 characters"
     );
     lengthChoice();
-  } else {
-    let passwordLength = parseInt(passLength);
-    passwordLengthNumber.push(passwordLength);
-    alert("Your password will be " + passwordLength + " characters");
   }
 };
 
